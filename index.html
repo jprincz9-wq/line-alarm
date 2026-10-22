@@ -100,7 +100,10 @@ input[type=range]{width:100%;accent-color:var(--accent)}
     <button id="area">Set door area</button>
     <button id="test">Test alarm</button>
   </div>
-  <button id="darkBtn">Dark screen</button>
+  <div class="row">
+    <button id="clearArea">Clear door area</button>
+    <button id="darkBtn">Dark screen</button>
+  </div>
 
   <p class="note" id="note">Keep Safari open with the phone on the charger. The screen stays on by itself. If you leave Safari or lock the phone, it stops watching. Turn the volume all the way up.</p>
 
@@ -308,6 +311,7 @@ $("test").onclick = () => fire(true);
 $("up").onclick = () => { quiet(); if (running) stop(); };
 $("snooze").onclick = () => { quiet(); snoozeUntil = Date.now() + 60000; if (running) setStatus("Watching, quiet 1 min", "warn"); setTimeout(() => running && setStatus("Watching", "on"), 60000); };
 
+$("clearArea").onclick = () => { zone = {x:0, y:0, w:1, h:1}; store.set("zone", zone); streak = 0; prevFrame = null; draw(); };
 $("darkBtn").onclick = () => { $("dark").hidden = false; };
 $("dark").onclick = () => { $("dark").hidden = true; };
 draw();
