@@ -1,0 +1,315 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#0b0d12">
+<title>Door Watch</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+/* One dark screen meant for a car at night: sodium-lamp amber accent, red only for the alarm. */
+:root{
+  --bg:#0b0d12; --surface:#151922; --line:#262c38; --fg:#dde2ec; --muted:#8a93a6;
+  --accent:#f2a93b; --alarm:#ff3b30; --ok:#3ddc84;
+  --font:"Atkinson Hyperlegible",system-ui,-apple-system,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.45 var(--font);-webkit-tap-highlight-color:transparent}
+body{padding:max(12px,env(safe-area-inset-top)) max(16px,env(safe-area-inset-right)) max(20px,env(safe-area-inset-bottom)) max(16px,env(safe-area-inset-left))}
+main{max-width:640px;margin:0 auto;display:flex;flex-direction:column;gap:14px}
+header{display:flex;align-items:center;justify-content:space-between;gap:12px}
+h1{font-size:22px;margin:0;letter-spacing:.01em}
+.pill{font:500 13px var(--mono);padding:4px 10px;border-radius:999px;border:1px solid var(--line);color:var(--muted);white-space:nowrap}
+.pill.on{color:var(--ok);border-color:color-mix(in srgb,var(--ok) 45%,transparent)}
+.pill.warn{color:var(--accent);border-color:color-mix(in srgb,var(--accent) 45%,transparent)}
+.stage{position:relative;width:100%;aspect-ratio:4/3;background:#000;border-radius:12px;overflow:hidden;border:1px solid var(--line)}
+.stage video,.stage canvas{position:absolute;inset:0;width:100%;height:100%}
+.stage video{object-fit:fill}
+.stage canvas{touch-action:none}
+.stage .hint{position:absolute;inset:0;display:grid;place-items:center;text-align:center;padding:20px;color:var(--muted);font-size:15px}
+.readout{display:flex;gap:16px;flex-wrap:wrap;font:500 13px var(--mono);color:var(--muted)}
+.readout b{color:var(--fg);font-weight:500}
+button{font:700 16px var(--font);color:var(--fg);background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:13px 14px;min-height:48px}
+button:focus-visible,input:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+button.primary{background:var(--accent);color:#1a1205;border-color:var(--accent)}
+button.active{border-color:var(--accent);color:var(--accent)}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.seg{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.seg button{border:0;border-radius:0;background:transparent}
+.seg button[aria-pressed="true"]{background:var(--surface);color:var(--accent)}
+.field{display:flex;flex-direction:column;gap:6px}
+.field label{font-size:14px;color:var(--muted);display:flex;justify-content:space-between}
+input[type=range]{width:100%;accent-color:var(--accent)}
+.note{font-size:14px;color:var(--muted);margin:0}
+.log{display:flex;flex-direction:column;gap:8px}
+.log h2{font-size:14px;color:var(--muted);margin:4px 0 0;font-weight:400;text-transform:uppercase;letter-spacing:.08em}
+.hit{display:flex;gap:10px;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:6px}
+.hit img{width:96px;height:72px;object-fit:cover;border-radius:6px;flex:none}
+.hit span{font:500 14px var(--mono)}
+.err{color:var(--alarm)}
+#dark{position:fixed;inset:0;background:#000;z-index:20;display:flex;align-items:flex-end;justify-content:center;padding-bottom:max(24px,env(safe-area-inset-bottom));color:#3a3f4a;font:500 12px var(--mono)}
+#alarm{position:fixed;inset:0;z-index:30;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;padding:24px max(24px,env(safe-area-inset-left));background:var(--alarm);color:#fff;text-align:center}
+#alarm.flash{animation:flash .5s steps(1) infinite}
+@keyframes flash{50%{background:#fff;color:var(--alarm)}}
+@media (prefers-reduced-motion:reduce){#alarm.flash{animation:none}}
+#alarm p{font-size:34px;font-weight:700;margin:0;text-wrap:balance}
+#alarm img{max-width:min(90vw,420px);border-radius:10px;border:3px solid #fff}
+#alarm .btns{display:grid;gap:10px;width:min(100%,360px)}
+#alarm button{background:#fff;color:#111;border:0;font-size:18px}
+#alarm button.ghost{background:transparent;color:inherit;border:2px solid currentColor}
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <h1>Door Watch</h1>
+    <span class="pill" id="status">Off</span>
+  </header>
+
+  <div class="stage" id="stage">
+    <video id="video" playsinline muted></video>
+    <canvas id="overlay"></canvas>
+    <div class="hint" id="hint">Tap Start. Then point the back camera at the door through the windshield.</div>
+  </div>
+
+  <div class="readout">
+    <span>Seen now: <b id="seen">–</b></span>
+    <span>Checks: <b id="checks">0</b></span>
+    <span>Since: <b id="since">–</b></span>
+  </div>
+
+  <button class="primary" id="start">Start watching</button>
+
+  <div class="seg" role="group" aria-label="What sets off the alarm">
+    <button id="modePeople" aria-pressed="true">People</button>
+    <button id="modeMotion" aria-pressed="false">Any motion</button>
+  </div>
+
+  <div class="field">
+    <label for="sens"><span>Sensitivity</span><span id="sensVal"></span></label>
+    <input type="range" id="sens" min="1" max="10" step="1" value="6">
+  </div>
+
+  <div class="row">
+    <button id="area">Set door area</button>
+    <button id="test">Test alarm</button>
+  </div>
+  <button id="darkBtn">Dark screen</button>
+
+  <p class="note" id="note">Keep Safari open with the phone on the charger. The screen stays on by itself. If you leave Safari or lock the phone, it stops watching. Turn the volume all the way up.</p>
+
+  <section class="log">
+    <h2>Alarms</h2>
+    <div id="hits"><p class="note">None yet.</p></div>
+  </section>
+</main>
+
+<div id="dark" hidden>Watching. Tap to show.</div>
+<div id="alarm" hidden>
+  <p id="alarmText">Someone is at the door</p>
+  <img id="alarmImg" alt="What the camera saw">
+  <div class="btns">
+    <button id="up">I'm up, stop</button>
+    <button class="ghost" id="snooze">False alarm, keep watching</button>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.22.0/dist/tf.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/coco-ssd@2.2.3/dist/coco-ssd.min.js"></script>
+<script>
+const $ = id => document.getElementById(id);
+const video = $("video"), overlay = $("overlay"), ctx = overlay.getContext("2d");
+const store = {
+  get(k, d){ try { const v = localStorage.getItem("dw:" + k); return v == null ? d : JSON.parse(v); } catch { return d; } },
+  set(k, v){ try { localStorage.setItem("dw:" + k, JSON.stringify(v)); } catch {} }
+};
+
+let mode = store.get("mode", "people");
+let zone = store.get("zone", {x:0, y:0, w:1, h:1});
+let sens = store.get("sens", 6);
+let model = null, running = false, busy = false, streak = 0, checks = 0, snoozeUntil = 0;
+let prevFrame = null, wakeLock = null, timer = null, drawing = false, drawStart = null, lastBoxes = [];
+const small = document.createElement("canvas"); small.width = 80; small.height = 60;
+const sctx = small.getContext("2d", {willReadFrequently: true});
+
+// Alarm sound: a loud two-tone beep made here as a WAV, played through an <audio> element.
+function makeBeep(){
+  const rate = 22050, secs = 1.2, n = rate * secs, buf = new ArrayBuffer(44 + n * 2), v = new DataView(buf);
+  const w = (o, s) => [...s].forEach((c, i) => v.setUint8(o + i, c.charCodeAt(0)));
+  w(0, "RIFF"); v.setUint32(4, 36 + n * 2, true); w(8, "WAVEfmt "); v.setUint32(16, 16, true);
+  v.setUint16(20, 1, true); v.setUint16(22, 1, true); v.setUint32(24, rate, true); v.setUint32(28, rate * 2, true);
+  v.setUint16(32, 2, true); v.setUint16(34, 16, true); w(36, "data"); v.setUint32(40, n * 2, true);
+  for (let i = 0; i < n; i++){
+    const t = i / rate, seg = Math.floor(t / 0.15), on = seg % 2 === 0;
+    const f = seg % 4 < 2 ? 1046 : 784;
+    v.setInt16(44 + i * 2, on ? Math.sin(2 * Math.PI * f * t) * 30000 : 0, true);
+  }
+  return URL.createObjectURL(new Blob([buf], {type: "audio/wav"}));
+}
+const siren = new Audio(makeBeep()); siren.loop = true;
+try { if (navigator.audioSession) navigator.audioSession.type = "playback"; } catch {}
+
+function setStatus(text, cls){ const s = $("status"); s.textContent = text; s.className = "pill" + (cls ? " " + cls : ""); }
+function fmt(d){ return d.toLocaleTimeString([], {hour: "numeric", minute: "2-digit", second: "2-digit"}); }
+
+function renderMode(){
+  $("modePeople").setAttribute("aria-pressed", mode === "people");
+  $("modeMotion").setAttribute("aria-pressed", mode === "motion");
+  $("sens").value = sens;
+  $("sensVal").textContent = sens + " of 10";
+}
+$("modePeople").onclick = () => { mode = "people"; store.set("mode", mode); streak = 0; renderMode(); };
+$("modeMotion").onclick = () => { mode = "motion"; store.set("mode", mode); streak = 0; prevFrame = null; renderMode(); };
+$("sens").oninput = e => { sens = +e.target.value; store.set("sens", sens); renderMode(); };
+renderMode();
+
+async function keepAwake(){
+  try { if ("wakeLock" in navigator && document.visibilityState === "visible") wakeLock = await navigator.wakeLock.request("screen"); } catch {}
+}
+document.addEventListener("visibilitychange", () => {
+  if (document.visibilityState === "visible" && running) keepAwake();
+  if (document.visibilityState === "hidden" && running) setStatus("Paused, open Safari", "warn");
+});
+
+$("start").onclick = async () => {
+  if (running){ stop(); return; }
+  // Unlock sound now, while we have the tap.
+  siren.muted = true; siren.play().then(() => { siren.pause(); siren.currentTime = 0; siren.muted = false; }).catch(() => { siren.muted = false; });
+  $("start").disabled = true; $("start").textContent = "Starting camera…";
+  try {
+    const stream = await navigator.mediaDevices.getUserMedia({video: {facingMode: {ideal: "environment"}, width: {ideal: 1280}, height: {ideal: 960}}, audio: false});
+    video.srcObject = stream; await video.play();
+  } catch (e){
+    $("hint").innerHTML = '<span class="err">Camera blocked. In Safari, tap the aA button, then Website Settings, then set Camera to Allow, and reload.</span>';
+    $("start").disabled = false; $("start").textContent = "Start watching"; return;
+  }
+  $("hint").hidden = true;
+  $("stage").style.aspectRatio = video.videoWidth + "/" + video.videoHeight;
+  sizeOverlay();
+  if (mode === "people" && !model){
+    $("start").textContent = "Loading people finder…"; setStatus("Loading", "warn");
+    try { model = await cocoSsd.load({base: "lite_mobilenet_v2"}); }
+    catch { mode = "motion"; store.set("mode", mode); renderMode(); $("note").textContent = "The people finder didn't load, so it's watching for any motion instead."; }
+  }
+  running = true; streak = 0; prevFrame = null; checks = 0;
+  $("since").textContent = fmt(new Date());
+  $("start").disabled = false; $("start").textContent = "Stop watching"; $("start").classList.remove("primary");
+  setStatus("Watching", "on"); keepAwake();
+  timer = setInterval(tick, 600);
+};
+
+function stop(){
+  running = false; clearInterval(timer);
+  const s = video.srcObject; if (s) s.getTracks().forEach(t => t.stop()); video.srcObject = null;
+  try { wakeLock && wakeLock.release(); } catch {}
+  $("start").textContent = "Start watching"; $("start").classList.add("primary");
+  $("hint").hidden = false; setStatus("Off"); ctx.clearRect(0, 0, overlay.width, overlay.height);
+}
+
+function sizeOverlay(){
+  const r = overlay.getBoundingClientRect(), d = devicePixelRatio || 1;
+  overlay.width = r.width * d; overlay.height = r.height * d; draw();
+}
+addEventListener("resize", sizeOverlay);
+
+function draw(){
+  const W = overlay.width, H = overlay.height, d = devicePixelRatio || 1;
+  ctx.clearRect(0, 0, W, H);
+  ctx.fillStyle = "rgba(0,0,0,.45)";
+  const zx = zone.x * W, zy = zone.y * H, zw = zone.w * W, zh = zone.h * H;
+  ctx.fillRect(0, 0, W, zy); ctx.fillRect(0, zy + zh, W, H - zy - zh);
+  ctx.fillRect(0, zy, zx, zh); ctx.fillRect(zx + zw, zy, W - zx - zw, zh);
+  ctx.strokeStyle = "#f2a93b"; ctx.lineWidth = 2 * d; ctx.setLineDash(drawing ? [8 * d, 6 * d] : []);
+  ctx.strokeRect(zx, zy, zw, zh); ctx.setLineDash([]);
+  ctx.strokeStyle = "#3ddc84";
+  for (const b of lastBoxes) ctx.strokeRect(b[0] * W, b[1] * H, b[2] * W, b[3] * H);
+}
+
+// Draw the door area with a finger.
+$("area").onclick = () => {
+  drawing = !drawing;
+  $("area").classList.toggle("active", drawing);
+  $("area").textContent = drawing ? "Drag a box on the picture" : "Set door area";
+  if (drawing) $("hint").hidden = true;
+  draw();
+};
+function pt(e){ const r = overlay.getBoundingClientRect(); return {x: Math.min(1, Math.max(0, (e.clientX - r.left) / r.width)), y: Math.min(1, Math.max(0, (e.clientY - r.top) / r.height))}; }
+overlay.addEventListener("pointerdown", e => { if (!drawing) return; drawStart = pt(e); overlay.setPointerCapture(e.pointerId); });
+overlay.addEventListener("pointermove", e => {
+  if (!drawing || !drawStart) return; const p = pt(e);
+  zone = {x: Math.min(p.x, drawStart.x), y: Math.min(p.y, drawStart.y), w: Math.abs(p.x - drawStart.x), h: Math.abs(p.y - drawStart.y)}; draw();
+});
+overlay.addEventListener("pointerup", () => {
+  if (!drawing || !drawStart) return; drawStart = null;
+  if (zone.w < .05 || zone.h < .05) zone = {x:0, y:0, w:1, h:1};
+  store.set("zone", zone); streak = 0; prevFrame = null;
+  drawing = false; $("area").classList.remove("active"); $("area").textContent = "Set door area"; draw();
+});
+
+async function tick(){
+  if (!running || busy || video.readyState < 2 || document.visibilityState !== "visible") return;
+  busy = true;
+  try {
+    let hit = false, seen = "–";
+    if (mode === "people" && model){
+      const minScore = 0.75 - sens * 0.05; // 1 = picky (0.70), 10 = eager (0.25)
+      const preds = await model.detect(video, 10, minScore);
+      const vw = video.videoWidth, vh = video.videoHeight;
+      lastBoxes = preds.filter(p => p.class === "person").map(p => [p.bbox[0] / vw, p.bbox[1] / vh, p.bbox[2] / vw, p.bbox[3] / vh])
+        .filter(b => { const cx = b[0] + b[2] / 2, cy = b[1] + b[3] / 2; return cx >= zone.x && cx <= zone.x + zone.w && cy >= zone.y && cy <= zone.y + zone.h; });
+      hit = lastBoxes.length > 0; seen = lastBoxes.length + (lastBoxes.length === 1 ? " person" : " people");
+    } else {
+      lastBoxes = [];
+      sctx.drawImage(video, zone.x * video.videoWidth, zone.y * video.videoHeight, zone.w * video.videoWidth, zone.h * video.videoHeight, 0, 0, 80, 60);
+      const px = sctx.getImageData(0, 0, 80, 60).data, gray = new Uint8Array(4800);
+      for (let i = 0; i < 4800; i++) gray[i] = (px[i * 4] * 3 + px[i * 4 + 1] * 6 + px[i * 4 + 2]) / 10;
+      if (prevFrame){
+        let changed = 0; for (let i = 0; i < 4800; i++) if (Math.abs(gray[i] - prevFrame[i]) > 28) changed++;
+        const pct = changed / 4800 * 100, need = 11 - sens; // 1 = needs 10% of the area to change, 10 = 1%
+        hit = pct >= need; seen = pct.toFixed(1) + "% changed";
+      }
+      prevFrame = gray;
+    }
+    checks++; $("checks").textContent = checks; $("seen").textContent = seen; draw();
+    streak = hit ? streak + 1 : 0;
+    if (streak >= 2 && Date.now() > snoozeUntil && $("alarm").hidden) fire();
+  } catch {} finally { busy = false; }
+}
+
+function snapshot(){
+  const c = document.createElement("canvas"); c.width = 480; c.height = Math.round(480 * video.videoHeight / video.videoWidth) || 360;
+  const g = c.getContext("2d"); g.drawImage(video, 0, 0, c.width, c.height);
+  g.strokeStyle = "#3ddc84"; g.lineWidth = 3;
+  for (const b of lastBoxes) g.strokeRect(b[0] * c.width, b[1] * c.height, b[2] * c.width, b[3] * c.height);
+  return c.toDataURL("image/jpeg", .7);
+}
+function fire(test){
+  const img = test ? "" : snapshot(), now = new Date();
+  $("alarmText").textContent = test ? "Test alarm" : (mode === "people" ? "Someone is at the door" : "Something moved at the door");
+  $("alarmImg").hidden = !img; if (img) $("alarmImg").src = img;
+  $("alarm").hidden = false; $("alarm").classList.add("flash"); $("dark").hidden = true;
+  siren.currentTime = 0; siren.play().catch(() => {});
+  if (!test){
+    const list = $("hits"); if (!list.querySelector(".hit")) list.innerHTML = "";
+    const row = document.createElement("div"); row.className = "hit";
+    row.innerHTML = '<img alt="Camera view at alarm"><span></span>';
+    row.querySelector("img").src = img; row.querySelector("span").textContent = fmt(now);
+    list.prepend(row); while (list.children.length > 5) list.lastChild.remove();
+  }
+}
+function quiet(){ siren.pause(); siren.currentTime = 0; $("alarm").hidden = true; $("alarm").classList.remove("flash"); streak = 0; }
+$("test").onclick = () => fire(true);
+$("up").onclick = () => { quiet(); if (running) stop(); };
+$("snooze").onclick = () => { quiet(); snoozeUntil = Date.now() + 60000; if (running) setStatus("Watching, quiet 1 min", "warn"); setTimeout(() => running && setStatus("Watching", "on"), 60000); };
+
+$("darkBtn").onclick = () => { $("dark").hidden = false; };
+$("dark").onclick = () => { $("dark").hidden = true; };
+draw();
+</script>
+</body>
+</html>
