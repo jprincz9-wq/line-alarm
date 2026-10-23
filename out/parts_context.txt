@@ -1,0 +1,52 @@
+MK1F4LL/A
+ntVariable":"AOS: US Consumer","storeFrontId":"10078","productsString":"iphone_duo","eventType":"event55","computedCustomStoreName":"AOS: US Consumer","langAttribute":"en-us","evarDataNodesEnabled":true},"currency":"USD","area":"shop","category":"iphone_duo","products":[{"sku":"MK1F4","partNumber":"MK1F4LL/A","price":{"fullPrice":1999.00},"category":"iphone","name":"iPhone Duo 256GB Night Sky"},{"sku":"MK1H4","partNumber":"MK1H4LL/A","price":{"fullPrice":2199.00},"category":"iphone","name":"iPhone Duo 512GB Night Sky"},{"sku":"MK1G4","partNumber":"MK1G4LL/A","price":{"fullPrice":2199.00},"category":"ip
+
+=====
+
+MK1H4LL/A
+ame":"AOS: US Consumer","langAttribute":"en-us","evarDataNodesEnabled":true},"currency":"USD","area":"shop","category":"iphone_duo","products":[{"sku":"MK1F4","partNumber":"MK1F4LL/A","price":{"fullPrice":1999.00},"category":"iphone","name":"iPhone Duo 256GB Night Sky"},{"sku":"MK1H4","partNumber":"MK1H4LL/A","price":{"fullPrice":2199.00},"category":"iphone","name":"iPhone Duo 512GB Night Sky"},{"sku":"MK1G4","partNumber":"MK1G4LL/A","price":{"fullPrice":2199.00},"category":"iphone","name":"iPhone Duo 512GB Star White"},{"sku":"MK1E4","partNumber":"MK1E4LL/A","price":{"fullPrice":1999.00},"category":"i
+
+=====
+
+MK1G4LL/A
+duo","products":[{"sku":"MK1F4","partNumber":"MK1F4LL/A","price":{"fullPrice":1999.00},"category":"iphone","name":"iPhone Duo 256GB Night Sky"},{"sku":"MK1H4","partNumber":"MK1H4LL/A","price":{"fullPrice":2199.00},"category":"iphone","name":"iPhone Duo 512GB Night Sky"},{"sku":"MK1G4","partNumber":"MK1G4LL/A","price":{"fullPrice":2199.00},"category":"iphone","name":"iPhone Duo 512GB Star White"},{"sku":"MK1E4","partNumber":"MK1E4LL/A","price":{"fullPrice":1999.00},"category":"iphone","name":"iPhone Duo 256GB Star White"},{"sku":"MK1L4","partNumber":"MK1L4LL/A","price":{"fullPrice":2599.00},"category":"
+
+=====
+
+MK1E4LL/A
+6GB Night Sky"},{"sku":"MK1H4","partNumber":"MK1H4LL/A","price":{"fullPrice":2199.00},"category":"iphone","name":"iPhone Duo 512GB Night Sky"},{"sku":"MK1G4","partNumber":"MK1G4LL/A","price":{"fullPrice":2199.00},"category":"iphone","name":"iPhone Duo 512GB Star White"},{"sku":"MK1E4","partNumber":"MK1E4LL/A","price":{"fullPrice":1999.00},"category":"iphone","name":"iPhone Duo 256GB Star White"},{"sku":"MK1L4","partNumber":"MK1L4LL/A","price":{"fullPrice":2599.00},"category":"iphone","name":"iPhone Duo 1TB Night Sky"},{"sku":"MK1Q4","partNumber":"MK1Q4LL/A","price":{"fullPrice":3199.00},"category":"iph
+
+=====
+
+MK1L4LL/A
+GB Night Sky"},{"sku":"MK1G4","partNumber":"MK1G4LL/A","price":{"fullPrice":2199.00},"category":"iphone","name":"iPhone Duo 512GB Star White"},{"sku":"MK1E4","partNumber":"MK1E4LL/A","price":{"fullPrice":1999.00},"category":"iphone","name":"iPhone Duo 256GB Star White"},{"sku":"MK1L4","partNumber":"MK1L4LL/A","price":{"fullPrice":2599.00},"category":"iphone","name":"iPhone Duo 1TB Night Sky"},{"sku":"MK1Q4","partNumber":"MK1Q4LL/A","price":{"fullPrice":3199.00},"category":"iphone","name":"iPhone Duo 2TB Star White"},{"sku":"MK1J4","partNumber":"MK1J4LL/A","price":{"fullPrice":2599.00},"category":"iphon
+
+=====
+
+MK1Q4LL/A
+12GB Star White"},{"sku":"MK1E4","partNumber":"MK1E4LL/A","price":{"fullPrice":1999.00},"category":"iphone","name":"iPhone Duo 256GB Star White"},{"sku":"MK1L4","partNumber":"MK1L4LL/A","price":{"fullPrice":2599.00},"category":"iphone","name":"iPhone Duo 1TB Night Sky"},{"sku":"MK1Q4","partNumber":"MK1Q4LL/A","price":{"fullPrice":3199.00},"category":"iphone","name":"iPhone Duo 2TB Star White"},{"sku":"MK1J4","partNumber":"MK1J4LL/A","price":{"fullPrice":2599.00},"category":"iphone","name":"iPhone Duo 1TB Star White"},{"sku":"MK1R4","partNumber":"MK1R4LL/A","price":{"fullPrice":3199.00},"category":"ipho
+
+=====
+
+MK1J4LL/A
+ 256GB Star White"},{"sku":"MK1L4","partNumber":"MK1L4LL/A","price":{"fullPrice":2599.00},"category":"iphone","name":"iPhone Duo 1TB Night Sky"},{"sku":"MK1Q4","partNumber":"MK1Q4LL/A","price":{"fullPrice":3199.00},"category":"iphone","name":"iPhone Duo 2TB Star White"},{"sku":"MK1J4","partNumber":"MK1J4LL/A","price":{"fullPrice":2599.00},"category":"iphone","name":"iPhone Duo 1TB Star White"},{"sku":"MK1R4","partNumber":"MK1R4LL/A","price":{"fullPrice":3199.00},"category":"iphone","name":"iPhone Duo 2TB Night Sky"}],"sectionEngagement":[[".dd-services","iphone services"],["[data-analytics-section='car
+
+=====
+
+MK1R4LL/A
+uo 1TB Night Sky"},{"sku":"MK1Q4","partNumber":"MK1Q4LL/A","price":{"fullPrice":3199.00},"category":"iphone","name":"iPhone Duo 2TB Star White"},{"sku":"MK1J4","partNumber":"MK1J4LL/A","price":{"fullPrice":2599.00},"category":"iphone","name":"iPhone Duo 1TB Star White"},{"sku":"MK1R4","partNumber":"MK1R4LL/A","price":{"fullPrice":3199.00},"category":"iphone","name":"iPhone Duo 2TB Night Sky"}],"sectionEngagement":[[".dd-services","iphone services"],["[data-analytics-section='carrierModel']","carriermodel"],["[data-analytics-section='tradein']","tradein"],["[data-analytics-section='dimensionCapacity']",
+
+=====
+
+SHPG3LL/A
+ month</span></span> or $199.99<span aria-hidden=\"true\">/yr.</span><span class=\"visuallyhidden\">Per Year.</span> <span>until cancelled</span>"},"moreOptions":{"secondarySelectionHeader":"Which AppleCare coverage plan would you like?","activeAcceptanceEnabled":false,"planDetails":[{"partNumber":"SHPG3LL/A","defaultAppleCareSelection":false,"isIUPAppleCare":false,"priceString":"$19.99<span><span aria-hidden=\"true\">/mo.</span><span class=\"visuallyhidden\">&nbsp;per month</span></span>","selectedSummaryPrice":"AppleCare+ for $19.99<span><span aria-hidden=\"true\">/mo.</span><span class=\"visuallyhid
+
+=====
+
+SHPH3LL/A
+arately until cancelled","rawPrice":19.99,"title":"Monthly coverage <span> until cancelled </span>","enableAASelectorHeaderNote":false,"enableAASelectorFooterNote":false,"dimensionPaymentType":{"value":"monthly","key":"dimensionPaymentType"},"additionalParams":{"acpart":"SHPG3LL/A"}},{"partNumber":"SHPH3LL/A","defaultAppleCareSelection":false,"isIUPAppleCare":false,"priceString":"$199.99<span aria-hidden=\"true\">/yr.</span><span class=\"visuallyhidden\">Per Year.</span>","selectedSummaryPrice":"AppleCare+ for $199.99<span aria-hidden=\"true\">/yr.</span><span class=\"visuallyhidden\">Per Year.</span> 
+
+=====
+
+SN7W2LL/A
+o upgrade go to Settings on your iPhone, iPad, or&nbsp;Mac.","groupPriceString":"$19.99<span><span aria-hidden=\"true\">/mo.</span><span class=\"visuallyhidden\">&nbsp;per month</span></span> <span>until cancelled</span>"},"moreOptions":{"activeAcceptanceEnabled":false,"planDetails":[{"partNumber":"SN7W2LL/A","defaultAppleCareSelection":false,"isIUPAppleCare":false,"priceString":"$19.99<span><span aria-hidden=\"true\">/mo.</span><span class=\"visuallyhidden\">&nbsp;per month</span></span> <span>until cancelled</span>","selectedSummaryPrice":"AppleCare One for $19.99<span><span aria-hidden=\"true\">/mo.

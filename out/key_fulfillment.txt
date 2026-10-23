@@ -1,0 +1,152 @@
+e,\"last\":true}],\"size\":14},\"footer\":null,\"isDefaultOpen\":true,\"showExpandAll\":false,\"expandAllItems\":false,\"pageId\":\"iphone_duo\"}"};
+
+
+
+        </script>
+
+
+        
+
+        <script>
+	if (window.asMicrodata) {
+	    window.asMicrodata.enableUpdateSeo();
+	    window.asMicrodata.updateSeoUrl('/shop/updateSEO');
+	}
+</script>
+
+            <script crossorigin="anonymous">
+        window.fulfillmentBootstrap = {
+            fulfillmentMessageUrl: "/shop/fulfillment-messages?fae=true",
+            fulfillmentMessageUrlAbsolute: "https://www.apple.com/shop/fulfillment-messages?fae=true",
+            localityLookupUrl : "/shop/address/locality-lookup?fae=true",
+            deliveryMessageUrl : "/shop/fulfillment-messages?fae=true",
+            deliveryMessageUrlAbsolute : "https://www.apple.com/shop/fulfillment-messages?fae=true",
+            loadingVoText: "Loading",
+            resultsVoText: "Results",
+            resultVoText: "Result",
+            geoLookupUrl : "/shop/addre
+
+-----
+
+er\":null,\"isDefaultOpen\":true,\"showExpandAll\":false,\"expandAllItems\":false,\"pageId\":\"iphone_duo\"}"};
+
+
+
+        </script>
+
+
+        
+
+        <script>
+	if (window.asMicrodata) {
+	    window.asMicrodata.enableUpdateSeo();
+	    window.asMicrodata.updateSeoUrl('/shop/updateSEO');
+	}
+</script>
+
+            <script crossorigin="anonymous">
+        window.fulfillmentBootstrap = {
+            fulfillmentMessageUrl: "/shop/fulfillment-messages?fae=true",
+            fulfillmentMessageUrlAbsolute: "https://www.apple.com/shop/fulfillment-messages?fae=true",
+            localityLookupUrl : "/shop/address/locality-lookup?fae=true",
+            deliveryMessageUrl : "/shop/fulfillment-messages?fae=true",
+            deliveryMessageUrlAbsolute : "https://www.apple.com/shop/fulfillment-messages?fae=true",
+            loadingVoText: "Loading",
+            resultsVoText: "Results",
+            resultVoText: "Result",
+            geoLookupUrl : "/shop/address/geo-lookup?fae=true",
+            
+
+-----
+
+ue,\"showExpandAll\":false,\"expandAllItems\":false,\"pageId\":\"iphone_duo\"}"};
+
+
+
+        </script>
+
+
+        
+
+        <script>
+	if (window.asMicrodata) {
+	    window.asMicrodata.enableUpdateSeo();
+	    window.asMicrodata.updateSeoUrl('/shop/updateSEO');
+	}
+</script>
+
+            <script crossorigin="anonymous">
+        window.fulfillmentBootstrap = {
+            fulfillmentMessageUrl: "/shop/fulfillment-messages?fae=true",
+            fulfillmentMessageUrlAbsolute: "https://www.apple.com/shop/fulfillment-messages?fae=true",
+            localityLookupUrl : "/shop/address/locality-lookup?fae=true",
+            deliveryMessageUrl : "/shop/fulfillment-messages?fae=true",
+            deliveryMessageUrlAbsolute : "https://www.apple.com/shop/fulfillment-messages?fae=true",
+            loadingVoText: "Loading",
+            resultsVoText: "Results",
+            resultVoText: "Result",
+            geoLookupUrl : "/shop/address/geo-lookup?fae=true",
+            omniturePageName: "Step 1",
+  
+
+-----
+
+":false,\"pageId\":\"iphone_duo\"}"};
+
+
+
+        </script>
+
+
+        
+
+        <script>
+	if (window.asMicrodata) {
+	    window.asMicrodata.enableUpdateSeo();
+	    window.asMicrodata.updateSeoUrl('/shop/updateSEO');
+	}
+</script>
+
+            <script crossorigin="anonymous">
+        window.fulfillmentBootstrap = {
+            fulfillmentMessageUrl: "/shop/fulfillment-messages?fae=true",
+            fulfillmentMessageUrlAbsolute: "https://www.apple.com/shop/fulfillment-messages?fae=true",
+            localityLookupUrl : "/shop/address/locality-lookup?fae=true",
+            deliveryMessageUrl : "/shop/fulfillment-messages?fae=true",
+            deliveryMessageUrlAbsolute : "https://www.apple.com/shop/fulfillment-messages?fae=true",
+            loadingVoText: "Loading",
+            resultsVoText: "Results",
+            resultVoText: "Result",
+            geoLookupUrl : "/shop/address/geo-lookup?fae=true",
+            omniturePageName: "Step 1",
+            doSendLeadQuoteMetric: true,
+     
+
+-----
+
+
+
+        
+
+        <script>
+	if (window.asMicrodata) {
+	    window.asMicrodata.enableUpdateSeo();
+	    window.asMicrodata.updateSeoUrl('/shop/updateSEO');
+	}
+</script>
+
+            <script crossorigin="anonymous">
+        window.fulfillmentBootstrap = {
+            fulfillmentMessageUrl: "/shop/fulfillment-messages?fae=true",
+            fulfillmentMessageUrlAbsolute: "https://www.apple.com/shop/fulfillment-messages?fae=true",
+            localityLookupUrl : "/shop/address/locality-lookup?fae=true",
+            deliveryMessageUrl : "/shop/fulfillment-messages?fae=true",
+            deliveryMessageUrlAbsolute : "https://www.apple.com/shop/fulfillment-messages?fae=true",
+            loadingVoText: "Loading",
+            resultsVoText: "Results",
+            resultVoText: "Result",
+            geoLookupUrl : "/shop/address/geo-lookup?fae=true",
+            omniturePageName: "Step 1",
+            doSendLeadQuoteMetric: true,
+            deliveryNotificationEnabled: true,
+            deliv

@@ -1,0 +1,14 @@
+buy page: 200 len=956482
+slugs=1 parts=11
+key fulfillment: 5 hits
+key cppart: 5 hits
+key pickup: 5 hits
+key PRODUCT_SELECTION_BOOTSTRAP: 1 hits
+key carrierPolicy: 5 hits
+slug page /shop/buy-iphone/iphone-duo/7: 200 len=956482
+extra parts on slug page: []
+fulfillment test 0: 541 len=127974 type=text/html url=https://www.apple.com/shop/fulfillment-messages?fae=true&pl=true&mts.0=regular&mts.1=compact&parts.0=MK1F4LL/A&searchNearby=true&store=R074
+fulfillment test 1: 541 len=127974 type=text/html url=https://www.apple.com/shop/fulfillment-messages?pl=true&mts.0=regular&parts.0=MK1F4LL/A&location=33431
+fulfillment test 2: 541 len=127974 type=text/html url=https://www.apple.com/shop/fulfillment-messages?pl=true&mts.0=regular&cppart=UNLOCKED/US&parts.0=MK1F4LL/A&location=33431
+fulfillment test 3: 541 len=127974 type=text/html url=https://www.apple.com/shop/fulfillment-messages?pl=true&mts.0=regular&cppart=VERIZON/US&parts.0=MK1F4LL/A&location=33431
+fulfillment test 4: 541 len=127974 type=text/html url=https://www.apple.com/shop/fulfillment-messages?pl=true&mts.0=regular&location=33431&parts.0=MK1F4LL/A&parts.1=MK1H4LL/A&parts.2=MK1G4LL/A&parts.3=MK1E4LL/A&parts.4=MK1L4LL/A&parts.5=MK1Q4LL/A&parts.6=MK1J4LL/A&parts.7=MK1R4LL/A

@@ -1,0 +1,17 @@
+d Items`,
+                    "toolTipSaveLabel": `Add to Saved Items`,
+                    "unableToSaveItemHeader": `Unable to save item`,
+                    "viewListLabel": `See list`,
+                    "shareLabel": `Share`,
+                    "linkCopiedLabel": `Link Copied`,
+                    "listAriaLabel": ``,
+            }
+        };
+    }
+</script>
+
+
+
+        <script>
+    window.PRODUCT_SELECTION_BOOTSTRAP = {
+        productSelectionData: {"sections":[{"formFieldName":"dimensionColor","dimension":"dimensionColor","dimensionImageRequired":true,"doesNotAffectMPartDetermination":false,"controller":"as.ColorSelectionController","header":"<span>Finish. </span><span class=\"as-subheading\">Pick your favorite.</span>","selectedText":"Selected","subHeader":null,"headerNoJS":false,"footer":null,"combinedDimension":null,"showBadges":null,"decisionSupportTile":{"items":[],"size":0},"showDisabledSelectors":false,"view":"colorNav","stepCount":"Step 1","id":"Item1","dependsOn":"It

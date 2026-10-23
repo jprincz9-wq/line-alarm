@@ -1,0 +1,115 @@
+       function sanitizeAndNormalizePathname(pathname) {
+                    let newPathname = pathname;
+                    let decodedPathname;
+
+                    try {
+                        decodedPathname = decodeURIComponent(pathname);
+                    } catch (error) {
+                        decodedPathname = pathname;
+                    }
+
+                    // first handle /storepickup and /<sf>/storepickup
+                    if (decodedPathname.includes('/storepickup')) {
+                        newPathname = '/storepickup';
+                    }
+
+                    // then handle /store and /<sf>/store
+                    else if (decodedPathname.includes('/store')) {
+                        const base = '/store';
+                        const path = decodedPathname.split('/store')[1];
+                        newPathname = `${base}${path}`;
+                    }
+
+                    // handle /search and /<sf>/search
+                    else if (decodedPathname.in
+
+-----
+
+zeAndNormalizePathname(pathname) {
+                    let newPathname = pathname;
+                    let decodedPathname;
+
+                    try {
+                        decodedPathname = decodeURIComponent(pathname);
+                    } catch (error) {
+                        decodedPathname = pathname;
+                    }
+
+                    // first handle /storepickup and /<sf>/storepickup
+                    if (decodedPathname.includes('/storepickup')) {
+                        newPathname = '/storepickup';
+                    }
+
+                    // then handle /store and /<sf>/store
+                    else if (decodedPathname.includes('/store')) {
+                        const base = '/store';
+                        const path = decodedPathname.split('/store')[1];
+                        newPathname = `${base}${path}`;
+                    }
+
+                    // handle /search and /<sf>/search
+                    else if (decodedPathname.includes('/search')) {
+ 
+
+-----
+
+athname = pathname;
+                    let decodedPathname;
+
+                    try {
+                        decodedPathname = decodeURIComponent(pathname);
+                    } catch (error) {
+                        decodedPathname = pathname;
+                    }
+
+                    // first handle /storepickup and /<sf>/storepickup
+                    if (decodedPathname.includes('/storepickup')) {
+                        newPathname = '/storepickup';
+                    }
+
+                    // then handle /store and /<sf>/store
+                    else if (decodedPathname.includes('/store')) {
+                        const base = '/store';
+                        const path = decodedPathname.split('/store')[1];
+                        newPathname = `${base}${path}`;
+                    }
+
+                    // handle /search and /<sf>/search
+                    else if (decodedPathname.includes('/search')) {
+                        newPathname = '/search';
+               
+
+-----
+
+me;
+
+                    try {
+                        decodedPathname = decodeURIComponent(pathname);
+                    } catch (error) {
+                        decodedPathname = pathname;
+                    }
+
+                    // first handle /storepickup and /<sf>/storepickup
+                    if (decodedPathname.includes('/storepickup')) {
+                        newPathname = '/storepickup';
+                    }
+
+                    // then handle /store and /<sf>/store
+                    else if (decodedPathname.includes('/store')) {
+                        const base = '/store';
+                        const path = decodedPathname.split('/store')[1];
+                        newPathname = `${base}${path}`;
+                    }
+
+                    // handle /search and /<sf>/search
+                    else if (decodedPathname.includes('/search')) {
+                        newPathname = '/search';
+                    }
+
+                    // handle /giftcard and /<sf>
+
+-----
+
+7b89eb75cd243b1bfaffc3ebb778" data-autom="footnotelist-symbol">#&nbsp;<p class="large-show-inline">Apple Upgrade Lease: This offer is for a consumer lease, not a purchase or loan. Lease provided by Klarna Inc. for 12-, 24-, or 36-month terms. 12- and 36-month terms not available for all device models. Your first monthly payment is due approximately 30 days after device is shipped or available for pickup. Lease approval is subject to eligibility and is based on creditworthiness. Monthly payments are based on the selected device and lease term. For example:</p>
+<p>For an iPhone 18 Pro 256GB with a purchase price of $1199 (excluding taxes and any trade-in credit), the typical monthly payment is $34.99 (excluding taxes and any trade-in credit) for a 24-month lease term and $49.99 (excluding taxes and any trade-in credit) for a 12-month lease term.</p>
+<p>For an Apple Watch Series 12 42mm with a purchase price of $399 (excluding taxes and any trade-in credit), the typical monthly payment is
